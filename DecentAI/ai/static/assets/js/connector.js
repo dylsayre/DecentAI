@@ -19,7 +19,7 @@ function getFormData(){
 }
 
 function updatePage(response){
-    document.getElementById('ai').innerHTML = response;
+    document.getElementById('overwrite').innerHTML = response;
 }
 
 function fetchData(){
@@ -37,7 +37,7 @@ function fetchData(){
   .then(response => {
     return response.json();
   })
-  .then((data) => updatePage(data))
+  .then((data) => updatePage(data.replace(/\"/g, "")))
 }
 
 document.addEventListener('submit', function () { fetchData(); });
